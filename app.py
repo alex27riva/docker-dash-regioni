@@ -51,6 +51,11 @@ slider_button = list([
 ])
 
 
+def update_data():
+    global df
+    df = pandas.read_csv(url)
+
+
 def calculate_data(data):
     # data calculation
     data['terapia_intensiva_avg'] = data['terapia_intensiva'].rolling(7).mean()
@@ -169,6 +174,7 @@ app.layout = html.Div(  # main div
     Output('andamento-contagi', 'figure'),
     [Input('region_select', 'value')])
 def update_andamento_contagi(regione):
+    update_data()
     reg_df = df.loc[df['denominazione_regione'] == regione]
     local_df = calculate_data(reg_df.copy())
     figure = {
@@ -194,6 +200,7 @@ def update_andamento_contagi(regione):
     Output('perc-casi-tamponi', 'figure'),
     [Input('region_select', 'value')])
 def update_perc_casi_tamponi(regione):
+    update_data()
     reg_df = df.loc[df['denominazione_regione'] == regione]
     local_df = calculate_data(reg_df.copy())
     figure = {
@@ -232,6 +239,7 @@ def update_perc_casi_tamponi(regione):
     Output('totale-ospedalizzati', 'figure'),
     [Input('region_select', 'value')])
 def update_ospedalizzati(regione):
+    update_data()
     reg_df = df.loc[df['denominazione_regione'] == regione]
     local_df = calculate_data(reg_df.copy())
     figure = {
@@ -255,6 +263,7 @@ def update_ospedalizzati(regione):
     Output('decessi-giornalieri', 'figure'),
     [Input('region_select', 'value')])
 def update_decessi_giornalieri(regione):
+    update_data()
     reg_df = df.loc[df['denominazione_regione'] == regione]
     local_df = calculate_data(reg_df.copy())
     figure = {
@@ -278,6 +287,7 @@ def update_decessi_giornalieri(regione):
     Output('terapia-intensiva', 'figure'),
     [Input('region_select', 'value')])
 def update_terapia_intensiva(regione):
+    update_data()
     reg_df = df.loc[df['denominazione_regione'] == regione]
     local_df = calculate_data(reg_df.copy())
     figure = {
