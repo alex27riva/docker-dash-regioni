@@ -22,7 +22,9 @@ plotly_js_minified = ['https://cdn.plot.ly/plotly-basic-latest.min.js']
 
 app = dash.Dash(__name__, external_scripts=plotly_js_minified,
                 meta_tags=[{'name': 'viewport',
-                            'content': 'width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5'}]
+                            'content': 'width=device-width, initial-scale=1.0, maximum-scale=1.2, minimum-scale=0.5'}],
+				requests_pathname_prefix='/regions/',
+                routes_pathname_prefix='/regions/'
                 )
 app.title = 'Dashboard Regioni'
 
