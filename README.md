@@ -5,4 +5,4 @@ Italy regions docker image for [Covid-Dashboard](https://github.com/alex27riva/C
 `docker build -t dash_regioni:latest .`
 
 ## Run
-`docker run -d -p 8050:8052 dash_regioni`
+`docker run --restart=always --name dashboard_regioni -d -p 8052:8050 dash_regioni`
